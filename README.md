@@ -46,5 +46,51 @@ c에서 <string.h>의 strcat에 문자열을 넣을때는 'c'가 아니라 "c" �
  대충 요약하면 이런 상황이다. 배열의 크기를 10036 이상으로 잡으면 OutOfBounds 오류가 안나고 10035이하면 오류가 난다.
  
  분명 for문에서는 10000까지만 접근하는데.
+
+### 2021.08.14
+
+#1316 뭘 틀린거지?
+
+int main(void) {
+
+	int alphabet = 0;
+	int num, result = 0, b;
+	int a[26] = { 0, };
+
+	char word[101] = { "" };
+
+	scanf("%d", &num);
+
+	for (int i = 0; i < num; i++) {
+		scanf("%s", word);
+
+		
+
+		for (int k = 0; k < strlen(word); k++) 
+		{
+			if (alphabet == word[k])
+			{
+			
+			}
+			else 
+			{
+				alphabet = word[k];
+				a[alphabet - 97] += 1;
+			}
+		}
+
+		for (int k = 0; k < 26; k++) {
+			if (a[k] >= 2) {
+				result++;
+				break;
+			}
+		}
+
+		for (int k = 0; k < 26; k++) {
+			a[k] = 0;
+		}
+	}
 	
+	printf("%d", num - result);
+}
 
